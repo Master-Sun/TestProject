@@ -19,5 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test1/', include('FilesUpload.urls')),
+    url(r'^test1/', include('FilesUpload.urls')),    # ajax文件上传
+    url(r'celery/', include('celerytask.urls', namespace="celery-task")),
 ]

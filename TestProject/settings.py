@@ -25,13 +25,16 @@ SECRET_KEY = '4a(6!*=l()##&ns8zk7^+kjf7vkar5-q*s9el$699p47+dsyr!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'FilesUpload',
+    'celerytask',
+    'djcelery',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +126,6 @@ STATIC_URL = '/static/'
 # 开发阶段：指定静态资源所在目录，STATIC_ROOT用来配置部署后静态资源路径
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
+
+# 导入celery相关的配置
+from .celeryconfig import *

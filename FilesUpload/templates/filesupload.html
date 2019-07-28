@@ -7,6 +7,9 @@
     <script src="/static/js/jquery.cookie.js"></script>
 </head>
 <body>
+
+<a href="{% url "celery-task:do" %}">测试url的命名空间namespace</a>
+
 <form action="/test1/upload_dir/" enctype="multipart/form-data" method="post" id="formUploadDir">
     {% csrf_token %}
     <!-- webkitdirectory：设置目录上传，貌似仅支持chrome -->
