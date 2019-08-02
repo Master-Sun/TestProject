@@ -1,5 +1,7 @@
 import os
 from django.shortcuts import render, HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 UPLOAD_PATH = 'D:\\test1\\'
@@ -27,4 +29,17 @@ def files_upload(request):
                 for chunk in file.chunks(chunk_size=2014):
                     f.write(chunk)
         return HttpResponse('OK')
+
+
+def send_email(request):
+    subject = "主题：注册验证码"
+    message = "内容：123456"
+    sender = settings.EMAIL_FROM
+    reciever = ['779625568@qq.com']    # 邮箱地址瞎写的也能发送成功，之后邮箱会收到一个退信的通知
+    # fail_silently：邮件未正常发送则抛出异常，设置为True则不会抛出异常
+    # 返回值为1则发送成功，0为发送失败
+    result= send_mail(subject, message, sender, reciever, fail_silently=True)
+    print(result)
+    return HttpResponse("OK")
+
 

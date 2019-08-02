@@ -128,4 +128,15 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 
 # 导入celery相关的配置
-from .celeryconfig import *
+# from .celeryconfig import *
+
+# 将邮件打印在终端上，便于测试
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.163.com'    # SMTP服务器主机
+EMAIL_HOST_USER = 'kzzf_sk@163.com'    # 邮箱账号
+EMAIL_HOST_PASSWORD = 'sk696867'    # 这里填的是授权码
+EMAIL_PORT = 25    # SMTP端口，默认25
+EMAIL_USE_TLS = True    # 是否采用TLS安全连接
+EMAIL_FROM = '空中追风<kzzf_sk@163.com>'
